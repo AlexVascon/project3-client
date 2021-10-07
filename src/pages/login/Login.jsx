@@ -32,17 +32,6 @@ export default function Login(props) {
             setErrorMessage(errorDescription);
         }
        
-
-        // axios.post(`${API_URL}/auth/login`, requestBody, { withCredentials: true })
-        // .then(userData => {
-        //     const { user } = userData.data
-        //     logInUser(user);
-        //     props.history.push('/profile');
-        // })
-        // .catch(err => {
-        //     const errorDescription = err.response.data.message;
-        //     setErrorMessage(errorDescription);
-        // })
     };
 
     return (

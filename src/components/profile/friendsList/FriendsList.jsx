@@ -21,13 +21,7 @@ export default function FriendList() {
                 console.log(err)
             } 
         }
-        // axios.get(`${API_URL}/users/friends`, { withCredentials: true })
-        // .then(response => {
-        //     setUsers(response.data);
-        // })
-        // .catch(err => console.log('could not retrieve list of users. Error:', err));
         getFriends();
-        console.log('friendslist:', users)
     }, [])
     return (
         <div className='friends-suggestions'>
