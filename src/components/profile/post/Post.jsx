@@ -12,7 +12,7 @@ import {format} from 'timeago.js';
 import Comments from '../comments/Comments';
 import Badge from '@mui/material/Badge';
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function Post(props) {
 

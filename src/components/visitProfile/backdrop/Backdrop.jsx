@@ -2,9 +2,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import './backdrop.css';
 import axios from 'axios';
 import ProfilePhoto from '../profilePhoto/ProfilePhoto';
-import { AuthContext } from '../../../context/auth.context';
 
-const API_URL = "http://localhost:5005";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function Backdrop(props) {
 

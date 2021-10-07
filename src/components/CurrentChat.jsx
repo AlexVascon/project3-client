@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, {  useRef, useState, useEffect } from 'react'
 import io from "socket.io-client";
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 let socket = ''
 
 export default function CurrentChat(props) {

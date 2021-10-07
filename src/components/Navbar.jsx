@@ -23,7 +23,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function Navbar() {
 
@@ -93,7 +93,7 @@ export default function Navbar() {
             <RssFeedIcon className='sidebarIcon' fontSize='medium'/>
             </Link>
             <Link to='/profile' className='nav-avatar'>
-            <Avatar alt={user.username} src={user?.profilePicture} sx={{ width: 55, height: 55 }} />
+            <Avatar alt={user?.username} src={user?.profilePicture} sx={{ width: 55, height: 55 }} />
             </Link>
             <Tooltip title="Account settings" className='nav-link'>
           <MoreVertIcon className='sidebarIcon' onClick={handleClick}  fontSize='medium'/>
@@ -194,9 +194,9 @@ export default function Navbar() {
       >
       {followers ? followers.map(user => (
         <MenuItem>
-            <Link to={`/visit/${user._id}`} className='nav-link'>
-                <Avatar alt={user.username} src={user.profilePicture} />
-                <p className='nav-link'> {user.username} </p>
+            <Link to={`/visit/${user?._id}`} className='nav-link'>
+                <Avatar alt={user?.username} src={user?.profilePicture} />
+                <p className='nav-link'> {user?.username} </p>
             </Link>
         </MenuItem>
       )) : ''}

@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from '../../context/auth.context';
 
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function Login(props) {
 
@@ -18,20 +18,31 @@ export default function Login(props) {
     const handleUsername = (e) => setUsername(e.target.value);
     const handlePassword = (e) => setPassword(e.target.value);
 
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        const requestBody = { username, password };
 
-        axios.post(`${API_URL}/auth/login`, requestBody, { withCredentials: true })
-        .then(userData => {
-            const { user } = userData.data
-            logInUser(user);
+        try {
+            const requestBody = { username, password };
+            const userData = await axios.post(`${API_URL}/auth/login`, requestBody, { withCredentials: true });
+            console.log('data:', userData)
+            logInUser(userData.data.user);
             props.history.push('/profile');
-        })
-        .catch(err => {
+        } catch (err) {
             const errorDescription = err.response.data.message;
             setErrorMessage(errorDescription);
-        })
+        }
+       
+
+        // axios.post(`${API_URL}/auth/login`, requestBody, { withCredentials: true })
+        // .then(userData => {
+        //     const { user } = userData.data
+        //     logInUser(user);
+        //     props.history.push('/profile');
+        // })
+        // .catch(err => {
+        //     const errorDescription = err.response.data.message;
+        //     setErrorMessage(errorDescription);
+        // })
     };
 
     return (

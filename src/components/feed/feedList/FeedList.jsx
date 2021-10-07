@@ -1,11 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './feedList.css'
 import axios from 'axios';
-// import FeedPost from './FeedPost';
 import FeedPost from '../feedPost/FeedPost';
 
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function FeedtList() {
 

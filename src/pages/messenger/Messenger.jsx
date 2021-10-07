@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 import { io } from "socket.io-client";
 
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 const filter = createFilterOptions();
 
 export default function Messenger() {

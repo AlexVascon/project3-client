@@ -8,7 +8,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MaterialIcon, {colorPalette} from 'material-icons-react';
 import Avatar from '@mui/material/Avatar';
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function Post() {
 

@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './postList.css'
 import axios from 'axios';
-// import Post from '../post/Post';
-// import Post from '../../visitProfile/postList/PostList'
 import Post from '../../visitProfile/post/Post'
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function PostList({ userId }) {
 
@@ -20,12 +18,6 @@ export default function PostList({ userId }) {
                 console.log(err)
             }
         }
-
-        // axios.get(`${API_URL}/post/viewedUser/${userId}`, { withCredentials: true })
-        //     .then(response => {
-        //         setPosts(response.data);
-        //     })
-        //     .catch(err => console.log(err));
         allUserPosts();
     }, [])
 

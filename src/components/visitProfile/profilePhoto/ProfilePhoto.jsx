@@ -3,19 +3,14 @@ import './profilePhoto.css'
 import axios from 'axios';
 import Badge from '@mui/material/Badge';
 
-const API_URL = "http://localhost:5005";
+const API_URL = process.env.REACT_APP_API_URL;
 
 export default function ProfilePhoto(props) {
 
     const [user, setUser] = useState('');
 
-    console.log('props', props)
+
     const isFollowing = async () => {
-        // axios.get(`${API_URL}/users/following/${props.userId}`, { withCredentials: true })
-        // .then(response => {
-        //     setUser(response.data)
-        // })
-        // .catch(err => console.log(err));
 
         try {
 
@@ -25,12 +20,7 @@ export default function ProfilePhoto(props) {
         } catch (err) {
             console.log(err)
         }
-        // const userId = props.userId
-        // axios.post(`${API_URL}/follow/request`, userId ,{ withCredentials: true })
-        // .then(response => {
-        //     console.log('request:', response);
-        // })
-        // .catch(err => console.log(err));
+    
     }
 
     useEffect(() => {
