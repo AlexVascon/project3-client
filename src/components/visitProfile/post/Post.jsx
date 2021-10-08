@@ -93,10 +93,10 @@ export default function Post(props) {
         <img src={props.post.img} alt="" />
         </div>
         <div className='post-comments' style={{ display: commentBox}}>
-        {/* <Comments postId={props.post._id}/> */}
-        {comments ? (comments.map(comment => (
+        <Comments postId={props.post._id}/>
+        {/* {comments ? (comments.map(comment => (
             <Comments comment={comment}/>
-        ))) : ('...loading') }
+        ))) : ('...loading') } */}
         </div>
         <form className='post-comment-form' onSubmit={handleCommentSubmit}>
             <TextField

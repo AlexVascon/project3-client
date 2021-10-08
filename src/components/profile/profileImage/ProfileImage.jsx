@@ -16,6 +16,7 @@ export default function ProfileImage(props) {
             const uploadData = new FormData();
             uploadData.append('profilePicture', e.target.files[0]);
             await axios.post(`${API_URL}/profile/upload/profilePicture`, uploadData, { withCredentials: true })
+            setUser(user)
         } catch (err) {
             console.log(err)
         }
@@ -52,7 +53,7 @@ export default function ProfileImage(props) {
     return (
         
         <>
-        {user ? (<div className='round-image' style={{zIndex:2}}>
+        {user.profilePicture ? (<div className='round-image' style={{zIndex:2}}>
          <Avatar alt={user.username} src={user.profilePicture} sx={{ width: 200, height: 200 }} className='comp-border-white'>
         <label htmlFor="file">
             <input className='profileImg' style={{display: 'none'}} type="file" id='file' accept='.png, .jpeg, .jpg' onChange={handleUpload} />
@@ -63,7 +64,18 @@ export default function ProfileImage(props) {
             <input className='description' type="text" name='from' placeholder={user.description} onChange={handleDescription}/>
             <button type='submit'>Save</button>
         </form>
-        </div>) : ('loading..')}
+        </div>) : <div className='round-image' style={{zIndex:2}}>
+         <Avatar alt={user.username} src={user.profilePicture} sx={{ width: 200, height: 200 }} className='comp-border-white'>
+        <label htmlFor="file">
+            <input className='profileImg' style={{display: 'none'}} type="file" id='file' accept='.png, .jpeg, .jpg' onChange={handleUpload} />
+        </label>
+        </Avatar>
+        {user? <h1>{user.username}</h1> : 'unknown'}
+        <form className='description-form' action="" onSubmit={handleDescriptionSubmit}>
+            <input className='description' type="text" name='from' placeholder={user.description} onChange={handleDescription}/>
+            <button type='submit'>Save</button>
+        </form>
+        </div>}
         
         </>
        

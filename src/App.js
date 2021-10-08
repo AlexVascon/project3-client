@@ -36,6 +36,7 @@ function App() {
       <Route exact path='/login' component={Login} />
       <Route exact path='/signup' component={Signup} />
       <Route exact path='/feed' component={Feed} />
+      {user ?  <Route path='/' component={Profile} /> : <Route path='/' component={Login} /> }
       <Route component={Error} />
       
     </Switch>

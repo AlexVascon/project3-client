@@ -60,9 +60,9 @@ export default function FeedPost(props) {
         <img src={props.post?.img} alt="" />
         </div>
         <div className='post-comments' style={{ display: commentBox}}>
-        <Comments postId={props.post?._id}/>
+        <Comments postId={props.post._id} />
         </div>
-        <form className='post-comment-form' onSubmit={handleCommentSubmit}>
+        {/* <form className='post-comment-form' onSubmit={handleCommentSubmit}>
             <TextField 
                 size="small"
                 value={comment}
@@ -80,7 +80,7 @@ export default function FeedPost(props) {
              >
             Send
             </Button>
-        </form>
+        </form> */}
         <div className='post-footer'>
         <ChatIcon className='sidebarIcon' onClick={() => toggleComments()} />
         <span><ThumbUpAltRoundedIcon className='thumb-icon' onClick={() => pressedLike()}/>{likeAmount}</span>

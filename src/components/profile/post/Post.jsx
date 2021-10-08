@@ -21,7 +21,7 @@ export default function Post(props) {
     const [likeAmount, setLikeAmount] = useState(props.post.likes.length);
     const [commentBox, setCommentBox] = useState('none');
     const [comment, setComment] = useState('');
-    
+    const [comments, setComments] = useState(null)
 
     const handleComment = (e) => setComment(e.target.value);
 
@@ -44,14 +44,11 @@ export default function Post(props) {
             const postId = await props.post?._id
             const data = { comment, postId };
             await axios.post(`${API_URL}/comments/create`, data, { withCredentials: true })
+            setComment(comment)
         } catch (err) {
             console.log(err)
         }
     }
-
-    useEffect(() => {
-        pressedLike();
-    }, [])
 
     const deletePost = (post) => {
         axios.post(`${API_URL}/post/delete`, post, { withCredentials: true })
@@ -87,9 +84,9 @@ export default function Post(props) {
         <img src={props.post.img} alt="" />
         </div>
         <div className='post-comments' style={{ display: commentBox}}>
-        <Comments postId={props.post._id}/>
+        <Comments postId={props.post._id} />
         </div>
-        <form className='post-comment-form' onSubmit={handleCommentSubmit}>
+        {/* <form className='post-comment-form' onSubmit={handleCommentSubmit}>
             <TextField
                 size="small"
                 value={comment}
@@ -107,7 +104,7 @@ export default function Post(props) {
              >
             Send
             </Button>
-        </form>
+        </form> */}
         <div className='post-footer'>
         <Badge badgeContent={likeAmount} anchorOrigin={{
             vertical: 'bottom',

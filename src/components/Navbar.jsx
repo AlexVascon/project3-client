@@ -21,6 +21,7 @@ import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import NavProfileImage from './NavProfileImage';
 
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -92,9 +93,10 @@ export default function Navbar() {
             <Link to='/feed' className='nav-link'>
             <RssFeedIcon className='sidebarIcon' fontSize='medium'/>
             </Link>
-            <Link to='/profile' className='nav-avatar'>
+            <NavProfileImage user={user} />
+            {/* <Link to='/profile' className='nav-avatar'>
             <Avatar alt={user?.username} src={user?.profilePicture} sx={{ width: 55, height: 55 }} />
-            </Link>
+            </Link> */}
             <Tooltip title="Account settings" className='nav-link'>
           <MoreVertIcon className='sidebarIcon' onClick={handleClick}  fontSize='medium'/>
         </Tooltip>
