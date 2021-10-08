@@ -19,6 +19,7 @@ export default function UsersList() {
         })
         .catch(err => console.log('could not retrieve list of users,', err));
     }, [])
+    
     return (
         <div className='friends-suggestions'>
         <h1>People you may know</h1>

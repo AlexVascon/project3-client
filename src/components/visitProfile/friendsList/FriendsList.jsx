@@ -14,7 +14,6 @@ export default function FriendsList(props) {
         const getProfileFriends = async () => {
             try {
                 const res = await axios.get(`${API_URL}/users/friends/${props.userId}`, { withCredentials: true });
-                console.log('users:', res)
                 setUsers(res.data)
             } catch(err) {
                 console.log(err)
